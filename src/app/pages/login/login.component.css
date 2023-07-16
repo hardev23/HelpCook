@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #3F2811;
+    text-align: center;
+}
+
+form {
+    background-color: #D4D0C4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background-color: #8A9A8A;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33.3%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.p-texto {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.p-link{
+    margin-top:-20px;
+    text-align: center;
+}
+
+.link-registro {
+    color: #3F2811;
+    font-weight: bold;
+}
+

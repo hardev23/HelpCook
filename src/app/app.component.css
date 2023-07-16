@@ -1,0 +1,26 @@
+/* Plantilla */
+
+body {
+    background-color: #f5f6ed;
+    font-family: Averta Standard;
+    color: #3c240d;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sección logo */
+
+.logo {
+    text-align: center;
+}
+a{
+    color:#3c240d
+}
+a:hover{
+    color: #8b9a8a
+}

@@ -1,0 +1,15 @@
+.btn-group {
+    background-color: #d4d0c4;
+    border-radius: 30px;
+}
+a{
+    color:#3c240d
+}
+a:hover{
+    color: #8b9a8a
+}
+
+.imagen{
+    margin-top: 40px;
+    margin-left: 100px
+}

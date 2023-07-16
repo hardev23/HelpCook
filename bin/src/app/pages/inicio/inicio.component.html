@@ -1,0 +1,134 @@
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px">
+  <img src="/assets/img/logo.png" class="w-25" alt="" />
+</div>
+
+
+<!-- Barra de productos -->
+  <div class="text-center">
+    <div
+      class="btn-group barracategorias"
+      role="group"
+      aria-label="Basic example"
+    >
+      <button type="button" class="btn iconosbarra" routerLink="mostrarRecetas" >
+        <img src="/assets/iconos/carnes.png" width="40px" style="margin-left: 30px;" alt="Carnes" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra" routerLink="mostrarRecetas">
+        <img src="/assets/iconos/pescado.png" width="40px" style="margin-left: 30px;" alt="Pescados" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra" routerLink="mostrarRecetas">
+        <img src="/assets/iconos/legumbres.png" width="40px" style="margin-left: 30px;" alt="Legumbres" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra" routerLink="mostrarRecetas">
+        <img src="/assets/iconos/arroces.png" width="40px" style="margin-left: 30px;" alt="Arroces" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra"  routerLink="mostrarRecetas">
+        <img src="/assets/iconos/pasta.png" width="40px" style="margin-left: 30px;" alt="Pastas" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra" routerLink="mostrarRecetas">
+        <img src="/assets/iconos/verduras.png" width="40px" style="margin-left: 30px;" alt="Verduras" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra"  routerLink="mostrarRecetas">
+        <img src="/assets/iconos/setas.png" width="40px" style="margin-left: 30px;" alt="Setas" (click)="capturarTextoCategorias($event)"/>
+      </button>
+      <button type="button" class="btn iconosbarra" routerLink="mostrarRecetas">
+        <img src="/assets/iconos/postre1.png" width="40px" style="margin-left: 30px; margin-right: 30px;"  alt="Postres" (click)="capturarTextoCategorias($event)"/>
+      </button>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <!-- Recetas mas valoradas -->
+  <a><h4 style="margin-left: 150px; font-weight: bold; font-size: 35px;" (click)="capturarTexto($event)">Recetas mejor valoradas</h4></a>
+  <h5 class="texto" style="margin-left: 150px; font-size: 25px;">
+    Recetas mejor valoradas
+    </h5>
+    <br/>
+  <div class="container text-center" style="margin-top: 40px">
+    <div class="row justify-content-center">
+      <div class="col"><input type="image" 
+          src={{recetasMejorValoradas[0].foto}}
+          class="img-fluid"
+          class="rounded"
+          width="300px"
+          height="200px"
+          (click)="mandarUsuarioReceta(recetasMejorValoradas[0].idRecetas)"
+        />
+        <h4 class="fw-bold">{{recetasMejorValoradas[0]?.titulo}}</h4>
+      </div>
+
+      <div class="col" style="margin-left: 100px">
+        <input type="image" 
+          src={{recetasMejorValoradas[1].foto}}
+          class="img-fluid"
+          class="rounded"
+          width="300px"
+          height="200px"
+          (click)="mandarUsuarioReceta(recetasMejorValoradas[1].idRecetas)"
+        />
+        <h4 class="fw-bold">{{recetasMejorValoradas[1]?.titulo}}</h4>
+      </div>
+
+      <div class="col" style="margin-left: 100px"><input type="image" 
+          src={{recetasMejorValoradas[2].foto}}
+          class="img-fluid"
+          class="rounded"
+          width="300px"
+          height="200px"
+          (click)="mandarUsuarioReceta(recetasMejorValoradas[2].idRecetas)"
+        />
+        <h4 class="fw-bold">{{recetasMejorValoradas[2]?.titulo}}</h4>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <!-- Recetas mas recientes -->
+  <a><h4 style="margin-left: 150px; font-weight: bold; font-size: 35px;" (click)="capturarTexto($event)">Recetas más recientes</h4></a>
+  <h5 class="texto" style="margin-left: 150px;font-size: 25px;">Recetas más recientes</h5>
+  <br/>
+  <div class="container text-center" style="margin-top: 40px">
+    <div class="row justify-content-center">
+      <div class="col"><input type="image" 
+          src={{recetasMasRecientes[0].foto}}
+          class="img-fluid"
+          class="rounded"
+          width="300px"
+          height="200px"
+          (click)="mandarUsuarioReceta(recetasMasRecientes[0].idRecetas)"
+        />
+        <h4 class="fw-bold">{{recetasMasRecientes[0].titulo}}</h4>
+      </div>
+
+      <div class="col"  style="margin-left: 80px" ><input type="image" 
+          src={{recetasMasRecientes[1].foto}}
+          class="img-fluid"
+          class="rounded"
+          width="300px"
+          height="200px"
+          (click)="mandarUsuarioReceta(recetasMasRecientes[1].idRecetas)"
+        />
+        <h4 class="fw-bold">{{recetasMasRecientes[1].titulo}}</h4>
+      </div>
+
+      <div class="col"  style="margin-left: 80px"><input type="image" 
+          src={{recetasMasRecientes[2].foto}}
+          class="img-fluid"
+          class="rounded"
+          width="300px"
+          height="200px"
+          (click)="mandarUsuarioReceta(recetasMasRecientes[2].idRecetas)"
+        />
+        <h4 class="fw-bold">{{recetasMasRecientes[2].titulo}}</h4>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,42 @@
+.outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    background-color: #d4d0c4;
+  }
+  
+  .titulo {
+    font-size: 60px;
+    margin-top: 30px;
+    font-weight: bold;
+  }
+  .receta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    font-size: 50px;
+    margin-top: 50px;
+    background-color: #8b9a8a;
+    color: #fdfefe;
+  }
+  .fechaAlta {
+    text-align: right;
+    margin-right: 100px;
+    margin-bottom: 40px;
+    font-size: x-large;
+    font-weight: bolder;
+  }
+  .descripcion {
+    font-size: 25px;
+    background-color: #3c240d;
+    color: #d4d0c4;
+  }
+  
+  i {
+    font-size: 30px;
+  }
+  .star-icon {
+    border: 1px solid #3c240d;
+  }

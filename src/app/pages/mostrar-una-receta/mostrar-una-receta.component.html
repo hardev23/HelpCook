@@ -1,0 +1,93 @@
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px">
+  <a class="nav-link"(click)="volverInicio()"><img src="/assets/img/logo.png" class="w-25" alt="" /></a>
+</div>
+<div class="receta rounded">
+  <!-- Para mostrar el nombre de la receta -->
+  <h1 class="receta-title">{{ receta?.titulo }}</h1>
+
+  <!--Para mostrar la valoración con estrellas-->
+
+  <div class="receta-valoracion">
+    <bar-rating [rate]="receta.valoracionMedia" [max]="5" [readOnly]="true">
+      <ng-template ratingActive>
+        <i class="bi bi-star-fill" style="margin: 2px; color: #3c240d"></i>
+      </ng-template>
+      <ng-template ratingInactive>
+        <i class="bi bi-star-fill" style="margin: 2px; color: #8A9A8A"></i>
+      </ng-template>
+    </bar-rating>
+  </div>
+
+  <!-- Para mostrar la foto -->
+
+  <div class="text-center my-4" style="margin-top: 50px;">
+    <img src="{{ receta.foto }}" class="rounded img-fluid" style="border: 2px solid #3c240d;" />
+  </div>
+
+  <!-- Botón guardar -->
+  <div class="d-flex justify-content-around">
+    <div class="guardar-receta" *ngIf = "usuario">
+      <label class="form-label fw-bold text-center mt-3" for="InputTitulo">Añade una nota para la receta:</label>
+      <input class="form-control fs-5" type="text" name="descripcion" id="InputDescripcion" [(ngModel)] = "descripcionFavorito">
+      <button class="btn-guardar" (click)="guardarReceta()"><i class="bi bi-bookmark-heart"></i> Guardar receta</button>
+    </div>
+  </div>
+  
+
+  <div class="listas" style="margin-top: 80px;">
+    <ul class="receta-list">
+      <h2 class="receta-list-title">Ingredientes</h2>
+      <!-- Para mostrar los ingredientes -->
+      <span *ngIf="!ingredientes.length">¡Ups! Todavía tenemos que buscar los ingredientes.</span>
+      <li *ngFor="let ingrediente of ingredientes" class="receta-ingrediente">
+        {{ ingrediente.nombre }}:
+        {{ ingrediente.cantidad }}
+      </li>
+    </ul>
+
+    <!-- Para mostrar las informacion -->
+    <ul class="receta-list info">
+      <h2 class="receta-list-title">Información</h2>
+      <li><b>Tiempo de preparación:</b> {{ receta.tiempo }} minutos.</li>
+      <li><b>Categoria:</b> {{ receta.categoria }}.</li>
+      <li><b>Comensales:</b> {{ receta.comensales }}</li>
+    </ul>
+  </div>
+  <br>
+  <br>
+  <!-- Para mostrar la preparacion -->
+  <div class="receta-preparacion">
+    <div class="receta-pasos">
+      <h2 class="receta-list-title preparacion">Preparación</h2>
+      <div class="row">
+        <div class="col">
+          <div *ngFor="let paso of pasos; let i = index" class="receta-paso">
+            <h4 class="receta-paso-title">Paso {{ i + 1 }}:</h4>
+            <p>{{ paso.descripcion }}</p>
+            <img src="{{ paso.foto }}" class="rounded img-fluid mb-3" style="border: 2px solid #3c240d;" />
+            <!-- <div *ngFor="let paso of pasos;" >
+              <img  src="{{ paso.foto }}" class="rounded img-fluid" style ="border: 2px solid #3c240d;"/>
+          </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Valorar la receta-->
+  <div>
+    <div class="row text-center mt-5">
+      <h5 class="fw-bold">¿Quieres valorar la receta?</h5>
+    </div>
+    <div class="d-grid col justify-content-center" class="receta-valoracion">
+      <bar-rating [rate]="nuevaValoracion" [max]="5" (rateChange)="valorarReceta($event)" *ngIf="!valoracionAnyadida">
+        <ng-template ratingActive>
+          <i class="bi bi-star-fill" style="margin: 2px; color: #3c240d"></i>
+        </ng-template>
+        <ng-template ratingInactive>
+          <i class="bi bi-star-fill" style="margin: 2px; color: #8A9A8A"></i>
+        </ng-template>
+      </bar-rating>
+    </div>
+  </div>
+  <div *ngIf="valoracionAnyadida">{{this.mensajeValoracion}}</div>

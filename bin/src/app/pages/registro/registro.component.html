@@ -1,0 +1,72 @@
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px">
+    <a class="nav-link" routerLink=""><img src="/assets/img/logo.png" class="w-25" alt="" /></a>
+</div>
+<!-- Formulario de registro -->
+<form enctype="multipart/form-data">
+    <!-- Nombre real de la persona que se esta registrando -->
+    <div class="form-group">
+        <label for="InputNombre">Nombre: </label>
+        <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre" id="InputNombre"
+            placeholder="Introduzca su nombre" required>
+    </div>
+    <!-- Apellidos de la persona que se esta registrando -->
+    <div class="form-group">
+        <label for="InputApellidos">Apellidos: </label>
+        <input type="text" class="form-control" name="apellidos" [(ngModel)]="apellido" id="InputApellidos"
+            placeholder="Introduzca sus apellidos" required>
+    </div>
+    <!-- Nick del usuario que se esta registrando -->
+    <div class="form-group">
+        <label for="InputNick">Nombre de usuario: </label>
+        <input type="text" class="form-control" name="nick" [(ngModel)]="nick" id="InputNick"
+            placeholder="Introduzca su nombre de usuario" required>
+    </div>
+    <!-- Correo del usuario que se esta registrando -->
+    <div class="form-group">
+        <label for="InputContrasenia">Correo electrónico: </label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="email" id="InputContrasenia"
+            placeholder="Introduzca un correo electrónico válido" required>
+    </div>
+    <!-- Contraseña del usuario que se esta registrando -->
+    <div class="form-group">
+        <label for="InputContrasenia1">Contraseña: </label>
+        <input type="password" class="form-control" name="contrasenia" [(ngModel)]="contrasenia" id="InputContrasenia1" placeholder="Introduzca la contraseña"
+            required>
+    </div>
+    <!-- Confirmación de la contraseña -->
+    <div class="form-group">
+        <label for="confirm-password">Confirmar Contraseña: </label>
+        <input type="password" class="form-control" name="confirm-password" 
+        [(ngModel)]="contraseniaRep" 
+        placeholder="Repita la contraseña" required
+        (ngModelChange)="contraseniaCoincide = contrasenia === contraseniaRep"
+        [ngClass]="{'is-invalid': !contraseniaCoincide}"
+        >
+        <div *ngIf="!contraseniaCoincide" class="invalid-feedback">
+            Las contraseñas no coinciden.
+        </div>
+    </div>
+    <!-- Foto de perfil del usuario que se esta registrando -->
+    <div class="form-group">
+        <label for="InputFoto">Seleccione su foto de usuario: (PNG,JPG) </label>
+        <input type="file"  class="form-control" name="file" id="InputFoto" aria-label="file example" [(ngModel)]="foto" required (change)="onFileSelected($event)">
+    </div>
+    <br/>
+    <div class="custom-control custom-checkbox">
+        <!-- Política de privacidad -->
+        <tr>
+            <td><input type="checkbox" class="custom-control-input" name="privacity" id="customCheck1"></td>
+            <td> <label class="custom-control-label" for="customCheck1" required>Acepto la Política de Privacidad</label></td>
+        </tr>
+        <!-- Autorización de uso de datos -->
+        <tr>
+            <td><input type="checkbox" class="custom-control-input" name="authorization" id="customCheck2"></td>
+            <td> <label class="custom-control-label" for="customCheck2" required>Autorizo el uso de mi información</label></td>
+        </tr>
+    </div>
+    <!-- Botón de registro que llama a la funcion guardar usuario --> 
+    <button type="submit" class="btn btn-primary" (click)="addUserService()" [disabled]="!contraseniaCoincide">Registrarme</button>
+    <!-- Botón que te dirige a la página de Inicio de sesión -->
+    <p>¿Ya tienes una cuenta? <a class="link-login" href="/login">Iniciar Sesión</a></p>
+</form>

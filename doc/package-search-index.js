@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.help.cook.helpcook"},{"l":"com.help.cook.helpcook.business"},{"l":"com.help.cook.helpcook.controller"},{"l":"com.help.cook.helpcook.models"},{"l":"com.help.cook.helpcook.repository"},{"l":"com.help.cook.helpcook.repository.domain"}];updateSearchResults();

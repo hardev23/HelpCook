@@ -1,0 +1,6 @@
+com.help.cook.helpcook
+com.help.cook.helpcook.business
+com.help.cook.helpcook.controller
+com.help.cook.helpcook.models
+com.help.cook.helpcook.repository
+com.help.cook.helpcook.repository.domain

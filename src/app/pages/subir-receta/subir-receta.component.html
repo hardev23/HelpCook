@@ -1,0 +1,140 @@
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px; margin-bottom: 30px">
+  <a class="nav-link" routerLink=""><img src="/assets/img/logo.png" class="w-25" alt="" /></a>
+</div>
+<form enctype="multipart/form-data">
+  <!-- Imagen -->
+  <div class="mb-3">
+    <label class="form-label fw-bold text-center mt-3" for="InputFoto">Adjunta la imagen</label>
+    <input class="form-control fs-5" type="file" name="foto" id="InputFoto" [(ngModel)]="foto" required
+      (change)="onFileSelected($event)" />
+  </div>
+  <!-- Titulo receta -->
+  <div class="mb-3">
+    <label class="form-label fw-bold text-center mt-3" for="InputTitulo">Título</label>
+    <input class="form-control fs-5" type="text" name="titulo" id="InputTitulo"
+      placeholder="Introduce el título de la receta" [(ngModel)]="titulo" />
+  </div>
+  <!-- Descripción receta -->
+  <div class="mb-3">
+    <label class="form-label fw-bold text-center mt-3" for="InputDescripcion">Descripción</label>
+    <input class="form-control fs-5" type="text" name="descripcion" id="InputDescripcion"
+      placeholder="Breve descripción de tu receta" [(ngModel)]="descripcion" />
+  </div>
+  <!-- Barra categorías -->
+  <div class="text-center mt-5">
+    <label class="form-label fw-bold text-center mt-3" for="FormControlImput1">Categoría</label>
+    <div class="btn-group barracategorias" role="group" aria-label="Basic example">
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/carnes.png" width="40px" style="margin-left: 30px" alt="Carnes" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/pescado.png" width="40px" style="margin-left: 30px" alt="Pescados" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/legumbres.png" width="40px" style="margin-left: 30px" alt="Legumbres" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/arroces.png" width="40px" style="margin-left: 30px" alt="Arroces" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/pasta.png" width="40px" style="margin-left: 30px" alt="Pastas" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/verduras.png" width="40px" style="margin-left: 30px" alt="Verduras" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/setas.png" width="40px" style="margin-left: 30px" alt="Setas" />
+      </button>
+      <button type="button" class="btn iconosbarra" (click)="capturarCategorias($event)">
+        <img src="/assets/iconos/postre1.png" width="40px" style="margin-left: 30px; margin-right: 30px"
+          alt="Postres" />
+      </button>
+    </div>
+  </div>
+  <!-- Comensales -->
+  <div class="row">
+    <div class="col">
+      <label class="form-label custom-label fw-bold mt-5 ms-5" for="InputComensales">Comensales</label>
+      <input class="form-control fs-5" type="number" name="comensales" id="InputComensales"
+        placeholder="¿Cuantas personas?" style="width: 200px" [(ngModel)]="comensales" />
+    </div>
+    <!-- Tiempo de preparación -->
+    <div class="col">
+      <label class="form-label custom-label fw-bold mt-5" for="idPreparacion">Tiempo de preparación</label>
+      <input class="form-control fs-5" type="number" name="preparacion" id="idPreparacion" placeholder="Tiempo en min."
+        style="width: 200px" [(ngModel)]="tiempo" />
+    </div>
+  </div>
+  <!--Ingredientes-->
+  <div class="row">
+    <label class="form-label custom-label fw-bold mt-5  text-center" for="InputIngredientesTipo"
+      style="margin-bottom: 30px;">Ingredientes</label>
+    <!-- Selección tipo Ingredientes --->
+    <div class="col">
+      <select class="form-select form-select fw-bold mt-2" for="InputIngredientesTipo"
+        aria-label=".form-select-lg example" (change)="tipo($event)">
+        <option value="">Selecciona el tipo de ingrediente</option>
+        <option *ngFor="let tipo of tiposUnicos" [value]="tipo">
+          {{ tipo }}
+        </option>
+      </select>
+      <!-- Selección Ingredientes y su cantidad--->
+      <div class="form-check" *ngIf="tipoSeleccionado" style="margin-top: 15px">
+        <div *ngFor="let ingXTipo of ingredientesXTipo | slice:0:numIngrAMostrar ">
+          <input class="form-check-input" type="checkbox" id="{{ ingXTipo.idIngredientes }}"
+            [checked]="ingXTipo.seleccionado" value="{{ ingXTipo.idIngredientes }}" (change)="ingSelect(ingXTipo)" />{{
+          ingXTipo.nombre }}
+          <input *ngIf="ingXTipo.seleccionado && ingredientesXTipo.length > 0" class="form-control" type="text" name="ingr{{ ingXTipo.idIngredientes }}"
+            id="cantidad{{ ingXTipo.idIngredientes }}" placeholder="Cantidad" [value]="ingXTipo.cantidad"
+            (input)="setCantidad($event.target['value'], ingXTipo)" />
+        </div>
+        <span
+        class="mostrar-mas"
+        (click)="mostrarIngredientes()"
+        >Mostrar más</span
+      >
+      </div>
+    </div>
+    <!--Panel que muestra los ingredientes seleccionados-->
+    <div class="col" style="margin-top: 10px; margin-left: 120px">
+      <h5><strong>Ingredientes seleccionados:</strong></h5>
+      <ul>
+        <li *ngFor="let ingSelect of ingredientes">
+          {{ ingSelect.nombre }} - {{ ingSelect.cantidad }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br />
+  <br />
+  <!-- Pasos -->
+  <div id="pasos-container">
+    <button class="btn btn-primary" (click)="mostrarPasos()">
+      Agrega los Pasos
+    </button>
+    <div *ngFor="let paso of pasos; let i = index" style="margin-top: 40px">
+      <h5>
+        <strong>Paso {{ i + 1 }}</strong>
+      </h5>
+      <div class="row" style="margin-top: 25px;">
+        <div class="col descripcion rounded">
+          <h6>{{ paso.descripcion }}</h6>
+        </div>
+        <div class="col">
+          <img [src]="paso.foto" class="rounded" width="300px" alt="Foto de paso {{ i + 1 }}" />
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="mostrarPaso">
+      <app-captura-paso [contadorPasos]="contadorPasos" (pasoAgregado)="onPasoAgregado($event)"></app-captura-paso>
+    </ng-container>
+  </div>
+
+  <br />
+  <br />
+  <!-- Botón enviar -->
+  <button type="submit" class="btn btn-primary" (click)="subirReceta()">
+    Enviar
+  </button>
+</form>

@@ -1,0 +1,23 @@
+
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px">
+    <a class="nav-link" routerLink=""><img src="/assets/img/logo.png" class="w-25" alt="" /></a>
+  </div>
+  <!-- Formulario -->
+<form>
+    <div class="form-group">
+        <label for="InputEmail1">Correo electrónico: </label>
+        <input type="email" class="form-control method='POST'"  [(ngModel)]='email'name="email" id="InputEmail1" placeholder="Correo electrónico">
+    </div>
+    <div class="form-group">
+        <label for="InputPassword1">Contraseña: </label>
+        <input type="password" class="form-control method='POST'" [(ngModel)]='contrasenia' name="password" id="InputPassword1" placeholder="Contraseña">
+    </div>
+  
+<br/>
+<button type="submit" class="btn btn-primary" (click)="login()">Iniciar sesión</button>
+<div *ngIf="validado" class="alert alert-danger">No tienes acceso. Necesitas iniciar sesión</div>
+  
+    <p class="p-texto">Si aún no tienes una cuenta puedes</p>
+    <p class="p-link"><a class="link-registro" href="/registro">registrarte aquí</a></p>
+</form>

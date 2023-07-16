@@ -1,0 +1,109 @@
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px">
+  <a class="nav-link" (click)="volverInicio()"><img src="/assets/img/logo.png" class="w-25" alt="" /></a>
+</div>
+
+<body>
+  <section class="h-100 gradient-custom-2">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card" style="background-color: #edebe6">
+            <div class="rounded-top d-flex flex-row" style="background-color: #d4d0c4; height: 200px">
+              <!-- Botón Subir Receta -->
+              <!-- <div class="d-flex flex-column">
+                <button type="button" class="boton-subir-receta" routerLink="/subirReceta/{{ usuario.idUsuarios }}">
+                  Subir Receta
+                </button>
+              </div> -->
+              <!-- Foto Usuario -->
+              <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px">
+                <img src="{{ usuario.foto }}" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2;"
+                  style="width: 150px; height: 150px; z-index: 1" />
+                <!-- Botón subir receta -->
+                <button type="button" class="boton-subir-receta" (click)="UsuarioAnyadeReceta()">
+                  Subir receta
+                </button>
+                 <!-- Botón editar perfil -->
+                <button type="button" class="boton-edit-perfil" (click)="mandarUsuario()">
+                  Editar perfil
+                </button>
+              </div>
+
+              <!-- Datos Usuario -->
+              <div class="ms-3" style="margin-top: 130px">
+                <h3 class="fw-semibold">{{ usuario.nombre }} {{usuario.apellido}}</h3>
+                <p class="fw-normal">@{{ usuario.nick }}</p>
+              </div>
+            </div>
+            <!-- Seccion Datos de recetas del Usuario -->
+            <div class="p-4" style="background-color: #8b9a8a; color: #edebe6">
+              <div class="d-flex justify-content-end text-center py-1">
+                <div>
+                  <p class="mb-1 h5">{{ recetas.length }}</p>
+                  <p class="normal mb-0">Recetas subidas</p>
+                </div>
+                <div class="px-3">
+                  <p class="mb-1 h5">{{ usuario.favoritos.length }}</p>
+                  <p class="normal mb-0">Recetas guardadas</p>
+                </div>
+              </div>
+            </div>
+            <!-- Seccion Recetas guardadas por el Usuario -->
+            <div class="container">
+              <div class="d-flex justify-content-between align-items-center mb-4 mt-5"
+                style="background-color: #d4d0c4">
+                <p class="lead fw-bold mb-0">Últimas recetas guardadas</p>
+              </div>
+              <div class="recetas-container">
+                <div class="receta" *ngFor="let favorito of recetasFavoritos.slice(0,numRecetasMostradas)">
+                  <img src="{{ favorito.foto }}" alt="{{ favorito.titulo }}" class="w-100 rounded-3" 
+                  routerLink="/mostraUnaReceta/{{ favorito.idRecetas }}"
+                  (click) = "mandarUsuarioReceta(favorito.idRecetas)"
+                  />
+                  <div class="w-100 rounded-3; titulos">
+                    {{ favorito.titulo }}
+                  </div>
+                </div>
+                <p *ngIf="recetasFavoritos.length === 0">
+                  No se han encontrado recetas guardadas.
+                </p>
+                <p *ngIf="recetasFavoritos.length > numRecetasMostradas">
+                  <button class="btn btn-link mostrar-mas" (click)="mostrarMasRecetas()">
+                    Mostrar más
+                  </button>
+                </p>
+              </div>
+            </div>
+            <!-- Seccion Recetas subidas por el Usuario -->
+            <div class="container">
+              <div class="d-flex justify-content-between align-items-center mb-4 mt-5"
+                style="margin-top: 30px; background-color: #d4d0c4">
+                <p class="lead fw-bold mb-0">Últimas recetas añadidas por tí</p>
+
+              </div>
+              <div class="recetas-container">
+                <div class="receta" *ngFor="let receta of recetas.slice(0, numRecetasMostradas)">
+                  <img src="{{ receta.foto }}" alt="{{ receta.titulo }}" class="w-100 rounded-1"
+                  (click) = "mandarUsuarioReceta(receta.idRecetas)"
+                   >
+                  <div class="w-100 rounded-3; titulos">
+                    {{ receta.titulo }}
+                  </div>
+                </div>
+                <p *ngIf="recetas.length === 0">
+                  No se han encontrado recetas guardadas.
+                </p>
+                <p *ngIf="recetas.length > numRecetasMostradas">
+                  <button class="btn btn-link mostrar-mas" (click)="mostrarMasRecetas()">
+                    Mostrar más
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

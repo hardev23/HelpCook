@@ -1,0 +1,58 @@
+<!-- Seccion logo -->
+<div class="text-center" style="margin-top: 30px">
+    <a class="nav-link" routerLink=""><img src="/assets/img/logo.png" class="w-25" alt="" /></a>
+</div>
+<!-- Formulario de registro -->
+<form enctype="multipart/form-data">
+    <!-- Nombre real que quiere editar -->
+    <div class="form-group">
+        <label for="InputNombre">Nombre: </label>
+        <input type="text" class="form-control" name="nombre" [(ngModel)]="usuario.nombre" id="InputNombre"  placeholder="{{usuario.nombre}}"
+            required>
+    </div>
+    <!-- Apellidos que quiere editar -->
+    <div class="form-group">
+        <label for="InputApellidos">Apellidos: </label>
+        <input type="text" class="form-control" name="apellidos" [(ngModel)]="usuario.apellido" id="InputApellidos" placeholder="{{usuario.apellido}}"
+            required>
+    </div>
+    <!-- Nick del usuario que quiere editar -->
+    <div class="form-group">
+        <label for="InputNick">Nombre de usuario: </label>
+        <input type="text" class="form-control" name="nick" [(ngModel)]="usuario.nick" id="InputNick" placeholder="{{usuario.nick}}"
+            required>
+    </div>
+    <!-- Correo del usuario que quiere editar -->
+    <div class="form-group">
+        <label for="InputContrasenia">Correo electrónico: </label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="usuario.email" id="InputContrasenia" placeholder="{{usuario.email}}"
+            required>
+    </div>
+    <!-- Contraseña del usuario que quiere editar -->
+    <div class="form-group">
+        <label for="InputContrasenia1">Contraseña: </label>
+        <input type="password" class="form-control" name="contrasenia" [(ngModel)]="contrasenia" id="InputContrasenia1"
+            required>
+    </div>
+    <!-- Confirmación de la contraseña -->
+    <div class="form-group">
+        <label for="confirm-password">Confirmar Contraseña: </label>
+        <input type="password" class="form-control" name="confirm-password" [(ngModel)]="contraseniaRep"
+        required
+        (ngModelChange)="contraseniaCoincide = contrasenia === contraseniaRep"
+        [ngClass]="{'is-invalid': !contraseniaCoincide}">
+        <div *ngIf="!contraseniaCoincide" class="invalid-feedback">
+            Las contraseñas no coinciden.
+        </div>
+    </div>
+    <!-- Foto de perfil del usuario que quiere editar -->
+    <div class="form-group">
+        <label for="InputFoto">Seleccione su foto de usuario: (PNG,JPG) </label>
+        <input type="file"  class="form-control" name="file" id="InputFoto" aria-label="file example" required (change)="onFileSelected($event)">
+        
+    </div>
+    <br/>
+    
+    <!-- Botón de registro que llama a la funcion guardar usuario --> 
+    <button type="submit" class="btn btn-primary" (click)="updateUserService()" [disabled]="!contraseniaCoincide">Actualizar datos</button>
+</form>

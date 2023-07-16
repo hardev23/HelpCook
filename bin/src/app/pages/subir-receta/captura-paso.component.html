@@ -1,0 +1,18 @@
+<form [formGroup]="pasoForm">
+<div class="row">
+    <div class="col">
+      <label class="form-label fw-bold mt-3" for="descripcionP">Descripción del paso</label>
+      <textarea name="text" id="descripcion" cols="50" rows="3" formControlName="descripcionPaso" placeholder="Descripción del paso"></textarea>
+    </div>
+    <div class="col">
+      <label class="form-label fw-bold mt-3" for="inputFoto">Adjunta la imagen</label>
+      <input class="form-control mt-4 w-75" type="file" name="formFile" id="inputFoto-${this.numPasos}"   (change)="onFileSelectedPasos($event)" required>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-evenly my-3">
+        <button class="btn-guardar-paso mt-3 guardar-paso-btn" (click)="agregar()">Guardar paso</button>
+      </div>
+    </div>
+    
+  </div>
+</form>
